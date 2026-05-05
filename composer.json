@@ -10,7 +10,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Cedbois\\WorkflowDynamicBundle\\": "src/"
+      "BCedric\\SymfonyWorkflowDynamicBundle\\": "src/"
     }
   },
   "authors": [
