@@ -1,5 +1,5 @@
 {
-  "name": "cedbois/symfony-workflow-dynamic-bundle",
+  "name": "bcedric/symfony-workflow-dynamic-bundle",
   "require": {
     "php": ">=8.2",
     "symfony/orm-pack": "2.4",
