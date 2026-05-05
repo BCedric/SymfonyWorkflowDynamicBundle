@@ -1,6 +1,6 @@
 <?php
 
-namespace BCedricSymfonyWorkflowDynamicBundle\Entity;
+namespace BCedric\SymfonyWorkflowDynamicBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\MappedSuperclass;

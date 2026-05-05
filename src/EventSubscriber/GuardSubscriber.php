@@ -1,8 +1,8 @@
 <?php
 
-namespace BCedricSymfonyWorkflowDynamicBundle\EventSubscriber;
+namespace BCedric\SymfonyWorkflowDynamicBundle\EventSubscriber;
 
-use BCedricSymfonyWorkflowDynamicBundle\Repository\WorkflowTransitionRepository;
+use BCedric\SymfonyWorkflowDynamicBundle\Repository\WorkflowTransitionRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Workflow\Event\GuardEvent;
 

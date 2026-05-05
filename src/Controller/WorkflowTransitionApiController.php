@@ -1,10 +1,10 @@
 <?php
 
-namespace BCedricSymfonyWorkflowDynamicBundle\Controller;
+namespace BCedric\SymfonyWorkflowDynamicBundle\Controller;
 
-use BCedricSymfonyWorkflowDynamicBundle\Entity\WorkflowTransition;
-use BCedricSymfonyWorkflowDynamicBundle\Repository\WorkflowPlaceRepository;
-use BCedricSymfonyWorkflowDynamicBundle\Repository\WorkflowTransitionRepository;
+use BCedric\SymfonyWorkflowDynamicBundle\Entity\WorkflowTransition;
+use BCedric\SymfonyWorkflowDynamicBundle\Repository\WorkflowPlaceRepository;
+use BCedric\SymfonyWorkflowDynamicBundle\Repository\WorkflowTransitionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

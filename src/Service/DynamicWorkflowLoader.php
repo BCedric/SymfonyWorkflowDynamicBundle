@@ -1,9 +1,9 @@
 <?php
 
-namespace BCedricSymfonyWorkflowDynamicBundle\Service;
+namespace BCedric\SymfonyWorkflowDynamicBundle\Service;
 
-use BCedricSymfonyWorkflowDynamicBundle\Entity\WorkflowPlace;
-use BCedricSymfonyWorkflowDynamicBundle\Entity\WorkflowTransition;
+use BCedric\SymfonyWorkflowDynamicBundle\Entity\WorkflowPlace;
+use BCedric\SymfonyWorkflowDynamicBundle\Entity\WorkflowTransition;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -49,7 +49,7 @@ class DynamicWorkflowLoader
             ->getRepository(WorkflowTransition::class)
             ->findBy(['target' => $target]);
 
-        // if ($target == 'BCedricSymfonyWorkflowDynamicBundle\Entity\EntityTest2') {
+        // if ($target == 'BCedric\SymfonyWorkflowDynamicBundle\Entity\EntityTest2') {
         //     dd($transitions);
         // }
 

@@ -1,11 +1,11 @@
 <?php
 
 // src/EventListener/RequestListener.php
-namespace BCedricSymfonyWorkflowDynamicBundle\EventListener;
+namespace BCedric\SymfonyWorkflowDynamicBundle\EventListener;
 
-use BCedricSymfonyWorkflowDynamicBundle\Entity\WorkflowEntity;
-use BCedricSymfonyWorkflowDynamicBundle\Service\DynamicWorkflowLoader;
-use BCedricSymfonyWorkflowDynamicBundle\Service\DynamicWorkflowServiceFactory;
+use BCedric\SymfonyWorkflowDynamicBundle\Entity\WorkflowEntity;
+use BCedric\SymfonyWorkflowDynamicBundle\Service\DynamicWorkflowLoader;
+use BCedric\SymfonyWorkflowDynamicBundle\Service\DynamicWorkflowServiceFactory;
 use Exception;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpKernel\Event\RequestEvent;

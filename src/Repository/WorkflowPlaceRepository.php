@@ -1,8 +1,8 @@
 <?php
 
-namespace BCedricSymfonyWorkflowDynamicBundle\Repository;
+namespace BCedric\SymfonyWorkflowDynamicBundle\Repository;
 
-use BCedricSymfonyWorkflowDynamicBundle\Entity\WorkflowPlace;
+use BCedric\SymfonyWorkflowDynamicBundle\Entity\WorkflowPlace;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

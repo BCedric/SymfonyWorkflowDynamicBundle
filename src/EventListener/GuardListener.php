@@ -1,9 +1,9 @@
 <?php
 
 // src/EventListener/RequestListener.php
-namespace BCedricSymfonyWorkflowDynamicBundle\EventListener;
+namespace BCedric\SymfonyWorkflowDynamicBundle\EventListener;
 
-use BCedricSymfonyWorkflowDynamicBundle\Repository\WorkflowTransitionRepository;
+use BCedric\SymfonyWorkflowDynamicBundle\Repository\WorkflowTransitionRepository;
 use Exception;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;

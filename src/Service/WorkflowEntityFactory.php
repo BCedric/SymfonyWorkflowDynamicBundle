@@ -1,8 +1,8 @@
 <?php
 
-namespace BCedricSymfonyWorkflowDynamicBundle\Service;
+namespace BCedric\SymfonyWorkflowDynamicBundle\Service;
 
-use BCedricSymfonyWorkflowDynamicBundle\Entity\WorkflowEntity;
+use BCedric\SymfonyWorkflowDynamicBundle\Entity\WorkflowEntity;
 use Symfony\Component\Workflow\Registry;
 
 class WorkflowEntityFactory

@@ -1,6 +1,6 @@
 <?php
 
-namespace BCedricSymfonyWorkflowDynamicBundle\Controller;
+namespace BCedric\SymfonyWorkflowDynamicBundle\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;

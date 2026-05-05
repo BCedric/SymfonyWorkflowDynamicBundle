@@ -1,8 +1,8 @@
 <?php
 
-namespace BCedricSymfonyWorkflowDynamicBundle\Entity;
+namespace BCedric\SymfonyWorkflowDynamicBundle\Entity;
 
-use BCedricSymfonyWorkflowDynamicBundle\Repository\WorkflowPlaceRepository;
+use BCedric\SymfonyWorkflowDynamicBundle\Repository\WorkflowPlaceRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: WorkflowPlaceRepository::class)]

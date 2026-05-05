@@ -1,6 +1,6 @@
 <?php
 
-namespace BCedricSymfonyWorkflowDynamicBundle\Service;
+namespace BCedric\SymfonyWorkflowDynamicBundle\Service;
 
 use Symfony\Component\Workflow\Workflow;
 

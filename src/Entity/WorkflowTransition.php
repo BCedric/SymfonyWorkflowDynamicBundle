@@ -1,8 +1,8 @@
 <?php
 
-namespace BCedricSymfonyWorkflowDynamicBundle\Entity;
+namespace BCedric\SymfonyWorkflowDynamicBundle\Entity;
 
-use BCedricSymfonyWorkflowDynamicBundle\Repository\WorkflowTransitionRepository;
+use BCedric\SymfonyWorkflowDynamicBundle\Repository\WorkflowTransitionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinTable;
