@@ -6,7 +6,8 @@
     "symfony/dependency-injection": ">=6.0",
     "symfony/workflow": "^7.4",
     "symfony/security-bundle": "^7.4",
-    "symfony/serializer": "^7.4"
+    "symfony/serializer": "^7.4",
+    "doctrine/doctrine-bundle": "^2.18"
   },
   "autoload": {
     "psr-4": {
