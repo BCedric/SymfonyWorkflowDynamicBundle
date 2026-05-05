@@ -1,0 +1,22 @@
+{
+  "name": "cedbois/symfony-workflow-dynamic-bundle",
+  "require": {
+    "php": ">=8.2",
+    "symfony/orm-pack": "2.4",
+    "symfony/dependency-injection": ">=6.0",
+    "symfony/workflow": "^7.4",
+    "symfony/security-bundle": "^7.4",
+    "symfony/serializer": "^7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Cedbois\\WorkflowDynamicBundle\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Cedbois",
+      "email": "cedric.bois@uca.fr"
+    }
+  ]
+}
