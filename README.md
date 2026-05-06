@@ -32,7 +32,9 @@ doctrine:
                 prefix: 'BCedric\SymfonyWorkflowDynamicBundle\Entity'
                 alias: SymfonyWorkflowDynamicBundle
 ```
+
 - Pour visualiser le workflow dans le profiler, ajouter dans le fichier `config/services.yaml` :
+
 ```
 dynamic_workflow.entity_test:
        public: true
@@ -71,18 +73,21 @@ Au sein de cette api, le paramètre target représente la classe sur laquelle s'
 
 ### WorkflowPlaceApiController
 
-| URL                           | Description                              | Méthode | paramètres               |
-| ----------------------------- | ---------------------------------------- | ------- | ------------------------ |
-| /workflow/place/{target}      | Renvoie la liste des étapes du workflow  | GET     |                          |
-| /workflow/place/{target}      | Créer une nouvelle étape sur le workflow | POST    | {name: 'nom de l'étape'} |
-| /workflow/place/{target}/{id} | Modifie une étape du workflow            | PUT     | {name: 'nom de l'étape'} |
+| URL                           | Description                                                                                                  | Méthode | paramètres               |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------ | ------- | ------------------------ |
+| /workflow/place/{target}      | Renvoie la liste des étapes du workflow                                                                      | GET     |                          |
+| /workflow/place/{target}      | Créer une nouvelle étape sur le workflow                                                                     | POST    | {name: 'nom de l'étape'} |
+| /workflow/place/{target}/{id} | Modifie une étape du workflow                                                                                | PUT     | {name: 'nom de l'étape'} |
+| /workflow/place/{target}/{id} | Supprime une étape du workflow (/!\ cette fonction peut générer des erreurs si un objet utilise cette étape) | DELETE  |                          |
 
 ### WorkflowTransitionApiController
 
-| URL                           | Description                                   | Méthode | paramètres                                                                                                                                                                                                                                                                              |
-| ----------------------------- | --------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| /workflow/transition/{target} | Renvoie la liste des transitions du workflow  | GET     |                                                                                                                                                                                                                                                                                         |
-| /workflow/transition/{target} | Créer une nouvelle transition sur le workflow | POST    | {name: 'nom de la transition', guard: 'expression de restriction de l'application de la transition utilisant la syntaxe du composant Expression Language de SF', from: [liste des noms des étapes de départ de la transition], to: [liste des noms des étapes de fin de la transition]} |
+| URL                                | Description                                      | Méthode | paramètres                                                                                                                                                                                                                                                                              |
+| ---------------------------------- | ------------------------------------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| /workflow/transition/{target}      | Renvoie la liste des transitions du workflow     | GET     |                                                                                                                                                                                                                                                                                         |
+| /workflow/transition/{target}      | Créer une nouvelle transition sur le workflow    | POST    | {name: 'nom de la transition', guard: 'expression de restriction de l'application de la transition utilisant la syntaxe du composant Expression Language de SF', from: [liste des noms des étapes de départ de la transition], to: [liste des noms des étapes de fin de la transition]} |
+| /workflow/transition/{target}/{id} | Modifie une nouvelle transition sur le workflow  | POST    | {name: 'nom de la transition', guard: 'expression de restriction de l'application de la transition utilisant la syntaxe du composant Expression Language de SF', from: [liste des noms des étapes de départ de la transition], to: [liste des noms des étapes de fin de la transition]} |
+| /workflow/transition/{target}/{id} | Supprime une nouvelle transition sur le workflow | DELETE  | {name: 'nom de la transition', guard: 'expression de restriction de l'application de la transition utilisant la syntaxe du composant Expression Language de SF', from: [liste des noms des étapes de départ de la transition], to: [liste des noms des étapes de fin de la transition]} |
 
 ### WorkflowApiController
 
