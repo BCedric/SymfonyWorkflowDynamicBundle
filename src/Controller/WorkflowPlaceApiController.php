@@ -68,13 +68,12 @@ class WorkflowPlaceApiController extends AbstractController
         EntityManagerInterface $em,
         string $target,
         WorkflowPlace $workflowPlace,
-        WorkflowEntityRepository $workflowEntityRepository,
         WorkflowTransitionRepository $workflowTransitionRepository
     ) {
 
         try {
 
-            if ($workflowPlaceRepository->getTarget() === $target) {
+            if ($workflowPlace->getTarget() === $target) {
                 // $entitiesUsingPlace = $workflowEntityRepository->createQueryBuilder('e')
                 //     ->where("e.marking LIKE :value")
                 //     ->setParameter('value', "'%\"" . $workflowPlace->getName() . "\"%'")
