@@ -75,14 +75,14 @@ class WorkflowPlaceApiController extends AbstractController
         try {
 
             if ($workflowPlaceRepository->getTarget() === $target) {
-                $entitiesUsingPlace = $workflowEntityRepository->createQueryBuilder('e')
-                    ->where("e.marking LIKE :value")
-                    ->setParameter('value', "'%\"" . $workflowPlace->getName() . "\"%'")
-                    ->getQuery()
-                    ->getResult();
-                if (!empty($entitiesUsingPlace)) {
-                    throw new Exception("An entity is using this place");
-                }
+                // $entitiesUsingPlace = $workflowEntityRepository->createQueryBuilder('e')
+                //     ->where("e.marking LIKE :value")
+                //     ->setParameter('value', "'%\"" . $workflowPlace->getName() . "\"%'")
+                //     ->getQuery()
+                //     ->getResult();
+                // if (!empty($entitiesUsingPlace)) {
+                //     throw new Exception("An entity is using this place");
+                // }
                 $transitionUsingPlace = $workflowTransitionRepository->createQueryBuilder("t")
                     ->where(":value in t.from OR :value in t.to")
                     ->setParameter('value', $workflowPlace)
