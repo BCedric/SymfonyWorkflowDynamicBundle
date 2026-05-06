@@ -3,8 +3,11 @@
 namespace BCedric\SymfonyWorkflowDynamicBundle\Controller;
 
 use BCedric\SymfonyWorkflowDynamicBundle\Entity\WorkflowPlace;
+use BCedric\SymfonyWorkflowDynamicBundle\Repository\WorkflowEntityRepository;
 use BCedric\SymfonyWorkflowDynamicBundle\Repository\WorkflowPlaceRepository;
+use BCedric\SymfonyWorkflowDynamicBundle\Repository\WorkflowTransitionRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -57,5 +60,46 @@ class WorkflowPlaceApiController extends AbstractController
         }
 
         return $this->get($workflowPlaceRepository, $target);
+    }
+
+    #[Route(path: '/{target}/{id}', name: 'delete', methods: ['DELETE'])]
+    public function delete(
+        WorkflowPlaceRepository $workflowPlaceRepository,
+        EntityManagerInterface $em,
+        string $target,
+        WorkflowPlace $workflowPlace,
+        WorkflowEntityRepository $workflowEntityRepository,
+        WorkflowTransitionRepository $workflowTransitionRepository
+    ) {
+
+        try {
+
+            if ($workflowPlaceRepository->getTarget() === $target) {
+                $entitiesUsingPlace = $workflowEntityRepository->createQueryBuilder('e')
+                    ->where("e.marking LIKE :value")
+                    ->setParameter('value', "'%\"" . $workflowPlace->getName() . "\"%'")
+                    ->getQuery()
+                    ->getResult();
+                if (!empty($entitiesUsingPlace)) {
+                    throw new Exception("An entity is using this place");
+                }
+                $transitionUsingPlace = $workflowTransitionRepository->createQueryBuilder("t")
+                    ->where(":value in t.from OR :value in t.to")
+                    ->setParameter('value', $workflowPlace)
+                    ->getQuery()
+                    ->getResult()
+                    ;
+                if (!empty($transitionUsingPlace)) {
+                    throw new Exception("A transition is using this place");
+                }
+                $em->remove($workflowPlace);
+                $em->flush();
+            } else {
+                throw new Exception("Bad target provided");
+            }
+        } catch (\Throwable $th) {
+            return new Response($th->getMessage(), 500);
+            //throw $th;
+        }
     }
 }

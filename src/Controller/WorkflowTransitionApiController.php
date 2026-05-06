@@ -31,15 +31,22 @@ class WorkflowTransitionApiController extends AbstractController
     }
 
     #[Route(path: '/{target}', name: 'post', methods: ['POST'])]
+    #[Route(path: '/{target}/{id}', name: 'put', methods: ['PUT'])]
     public function post(
         Request $request,
         EntityManagerInterface $em,
         WorkflowPlaceRepository $workflowPlaceRepository,
+        WorkflowTransitionRepository $workflowTransitionRepository,
         string $target,
+        string $id
     ) {
         $body = json_decode($request->getContent(), true);
 
-        $transition = new WorkflowTransition();
+        if ($id == null) {
+            $transition = new WorkflowTransition();
+        } else {
+            $transition = $workflowTransitionRepository->find($id);
+        }
 
         if (!empty($this->workflowTransitionRepository->findBy(['name' => $body['name'], 'target' => $target]))) {
             return new Response("This transition already exists", 500);
@@ -73,6 +80,22 @@ class WorkflowTransitionApiController extends AbstractController
         $em->persist($transition);
 
         $em->flush();
+
+        return $this->get($target);
+    }
+
+    #[Route(path: '/{target}/{id}', name: 'delete', methods: ['DELETE'])]
+    public function delete(
+        string $target,
+        WorkflowTransition $workflowTransition,
+        EntityManagerInterface $em
+    ) {
+        if ($workflowTransition->getTarget() === $target) {
+            $em->remove($workflowTransition);
+            $em->flush();
+        } else {
+            return new Response("Bad target provided", 500);
+        }
 
         return $this->get($target);
     }
