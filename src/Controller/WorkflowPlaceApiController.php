@@ -64,7 +64,6 @@ class WorkflowPlaceApiController extends AbstractController
 
     #[Route(path: '/{target}/{id}', name: 'delete', methods: ['DELETE'])]
     public function delete(
-        WorkflowPlaceRepository $workflowPlaceRepository,
         EntityManagerInterface $em,
         string $target,
         WorkflowPlace $workflowPlace,
@@ -72,22 +71,14 @@ class WorkflowPlaceApiController extends AbstractController
     ) {
 
         try {
-
             if ($workflowPlace->getTarget() === $target) {
-                // $entitiesUsingPlace = $workflowEntityRepository->createQueryBuilder('e')
-                //     ->where("e.marking LIKE :value")
-                //     ->setParameter('value', "'%\"" . $workflowPlace->getName() . "\"%'")
-                //     ->getQuery()
-                //     ->getResult();
-                // if (!empty($entitiesUsingPlace)) {
-                //     throw new Exception("An entity is using this place");
-                // }
                 $transitionUsingPlace = $workflowTransitionRepository->createQueryBuilder("t")
-                    ->where(":value in t.from OR :value in t.to")
+                    ->innerJoin("t.toPlaces", "p1")
+                    ->innerJoin("t.fromPlaces", "p2")
+                    ->where("p1 = :value OR p2 = :value")
                     ->setParameter('value', $workflowPlace)
                     ->getQuery()
-                    ->getResult()
-                    ;
+                    ->getResult();
                 if (!empty($transitionUsingPlace)) {
                     throw new Exception("A transition is using this place");
                 }
